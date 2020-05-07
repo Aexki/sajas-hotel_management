@@ -1,0 +1,97 @@
+<!DOCTYPE html>{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preference</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+
+    <style>
+        .preference {
+            position: absolute;
+            margin-top: 140px;
+        }
+        
+        .preference h1 {
+            position: absolute;
+            text-align: center;
+            background: white;
+            border: 2px solid black;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 1;
+            padding: 10px
+        }
+        
+        .preference img {
+            height: calc(100vh - 180px);
+            border: 2px solid black;
+        }
+        
+        .obvio h1 {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        
+        .obvio:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="{% static './index.html'%}"><img src="{% static 'img/logo.png'%}" alt=""></a>
+                </div>
+                <div class="nav-right">
+                    <h3 style="color: white;">Welcome <span id="name">{% if user.is_authenticated %}{{user.firstname}},{%endif%}</span></h3>
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li><a href="./about-us.html">About</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Log out</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <div class="preference">
+        <h1>State your purpose of visiting us..</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="./business_feature" class="obvio">
+                        <h1>Business</h1><img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Falejandrocremades%2Ffiles%2F2018%2F12%2Fbusiness-3605367_1920-1200x741.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="./feature" class="obvio">
+                        <h1>Tourist</h1><img src="https://www.puretravel.com/blog/wp-content/uploads/2014/05/Your-essential-guide-to-beach-holiday-etiquette.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-image">
+                    <img class="booking-img" src="{% static 'img/faci-1.jpg' %}" alt="Booking Image">
+                </div>
+                <div class="booking-form">
+                    <form action="register" method="POST" id="booking-form">
+                        {% csrf_token %}
+                        <h2>Booking place for your stay!</h2>
+                        <div class="form-group form-input">
+                            <input type="text" name="first_name" id="name" value="" required/>
+                            <label for="name" class="form-label">First name</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" name="last_name" id="name" value="" required/>
+                            <label for="name" class="form-label">Last name</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="number" name="phone" id="phone" value="" required />
+                            <label for="phone" class="form-label">Your phone number</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="email" name="email" id="phone" value="" required />
+                            <label for="phone" class="form-label">Your email</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" name="username" id="name" value="" required/>
+                            <label for="name" class="form-label">Username</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="password" name="password1" id="name" value="" required/>
+                            <label for="name" class="form-label">Password</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="password" name="password2" id="name" value="" required/>
+                            <label for="name" class="form-label">Confirm Password</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="date" class="datepicker-1">
+                            <label for="name" class="form-label">Check in</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="date" class="datepicker-1">
+                            <label for="name" class="form-label">Check out</label>
+                        </div>
+
+                        <div class="form-radio">
+                            <label class="label-radio"> Number of people to stay</label>
+                            <div class="radio-item-list">
+                                <span class="radio-item">
+                                    <input type="radio" name="number_people" value="1" id="number_people_2" />
+                                    <label for="number_people_2">1</label>
+                                </span>
+                                <span class="radio-item active">
+                                    <input type="radio" name="number_people" value="2" id="number_people_4" checked="checked" />
+                                    <label for="number_people_4">2</label>
+                                </span>
+                                <span class="radio-item">
+                                    <input type="radio" name="number_people" value="3" id="number_people_6" />
+                                    <label for="number_people_6">3</label>
+                                </span>
+                                <span class="radio-item">
+                                    <input type="radio" name="number_people" value="4" id="number_people_8" />
+                                    <label for="number_people_8">4</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-radio">
+                            <label class="label-radio"> Number of rooms you want to book</label>
+                            <div class="radio-item-list">
+                                <span class="radio-item">
+                                    <input type="radio" name="number_room" value="1" id="number_room_2" />
+                                    <label for="number_room_2">1</label>
+                                </span>
+                                <span class="radio-item active">
+                                    <input type="radio" name="number_room" value="2" id="number_room_4" checked="checked" />
+                                    <label for="number_room_4">2</label>
+                                </span>
+                                <span class="radio-item">
+                                    <input type="radio" name="number_room" value="3" id="number_room_6" />
+                                    <label for="number_room_6">3</label>
+                                </span>
+                                <span class="radio-item">
+                                    <input type="radio" name="number_room" value="4" id="number_room_8" />
+                                    <label for="number_room_8">4</label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" value="Book now" class="submit" id="submit" name="submit" />
+                            <!-- <a href="#" class="vertify-booking">Verify your booking info from your phone</a> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'javascript/main.js' %}"></script>
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

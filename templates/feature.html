@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style>
+        #feature {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 170px;
+        }
+        
+        #feature h1 {
+            font-size: 85px;
+        }
+        
+        .card {
+            height: 29rem;
+            text-align: center;
+            border: 1px solid black;
+            transition: 0.2s ease-in-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card img {
+            width: 18rem;
+            height: 18rem;
+            border-bottom: 1px solid black;
+        }
+        
+        #c1 {
+            position: absolute;
+            left: 5%;
+            top: 130px;
+        }
+        
+        #c2 {
+            position: absolute;
+            right: 5%;
+            top: 130px;
+        }
+        
+        #c3 {
+            position: absolute;
+            left: 28%;
+            top: 310px;
+        }
+        
+        #c4 {
+            position: absolute;
+            right: 28%;
+            top: 310px;
+        }
+        
+        #services button {
+            width: 200px;
+        }
+        
+        #request {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            opacity: 0.5;
+            z-index: 1;
+            display: none;
+        }
+        
+        #request_panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border: 2px solid black;
+            background: white;
+            text-align: center;
+            width: 550px;
+            height: 450px;
+            padding: 30px;
+            z-index: 2;
+            display: none;
+        }
+        
+        #request_panel input {
+            width: 370px;
+        }
+        
+        #request_panel a:hover {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function request() {
+            document.getElementById("request").style.display = "block";
+            document.getElementById("request_panel").style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="{% static './index.html'%}"><img src="{% static 'img/logo.png'%}" alt=""></a>
+                </div>
+                <div class="nav-right">
+                    <h3 style="color: white;">Welcome <span id="name">{% if user.is_authenticated %}{{user.firstname}},{%endif%}</span></h3>
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li><a href="./about-us.html">About</a></li>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="drop-menu">
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="rooms.html">Rooms</a></li>
+                                <li><a href="services.html">Services</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.html">News</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+
+    <div id="feature">
+        <h1>Features </h1>
+    </div>
+    <div class="card" style="width: 18rem;" id="c1">
+        <img src="https://marketingplatform.vivial.net/sites/default/files/inline_images/colfax-cleaning-service.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Raise a request</h5>
+            <p class="card-text">Get the best room service 24x7.</p>
+
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Get Now!
+                    </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <form action="{% url 'feature' %}" method="post" id="services">
+                        {%csrf_token%}
+                        <div class="luggage">
+                            <button type="submit" value="Luggage carrier" name="feature">Luggage carrier</button><br>
+                        </div>
+                        <button type="submit" value="Room services" name="feature">Room services</button><br>
+                        <button type="submit" value="A.C. issue service" name="feature">A.C. issue service</button><br>
+                        <button type="submit" value="T.V. issues service" name="feature">T.V. issues service</button><br>
+                        <button type="submit" value="Laundry service" name="feature">Laundry service</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;" id="c2">
+        <img src="https://i.pinimg.com/originals/bc/3c/3d/bc3c3d56b27e136034484547db1a58f5.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Cab Booking</h5>
+            <p class="card-text">The best cabs available 24x7</p>
+            <a href="./cab" class="btn btn-primary">Book Now!</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;" id="c3">
+        <img src="https://cdn3.vectorstock.com/i/1000x1000/62/97/24-hour-room-service-icon-vector-14076297.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Food Service</h5>
+            <p class="card-text">Hungry..? Try our best dishes now..</p>
+            <a href="./food" class="btn btn-primary">Get Menu</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;" id="c4">
+        <img src="https://i0.wp.com/discovervibe.blog/wp-content/uploads/2019/08/Webp.net-resizeimage-13.jpg?fit=1920%2C1080&ssl=1" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Raise a complaint</h5>
+            <p class="card-text">If you have any doubt, send your requests.</p>
+            <button class="btn btn-primary" value="Laundry Service" name="feature" onclick="request()">Ask Now!</button>
+        </div>
+    </div>
+
+
+    <div id="request">
+    </div>
+    <div id="request_panel">
+        <h2>Write your Complaint
+            <a onclick="history.go(0)"><i class="fas fa-times-circle"></i></a>
+        </h2><br>
+        <form action="{% url 'thanku' %}" id="request_body" method="POST">{%csrf_token%}
+            <input type="text" placeholder="Enter your Name" name="username"><br><br>
+            <input type="text" placeholder="Enter Room Number" name="room"><br><br>
+            <textarea placeholder="Enter your Complaint.." cols="40" rows="5" value="0" name="complaint"></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

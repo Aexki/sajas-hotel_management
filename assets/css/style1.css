@@ -1,0 +1,450 @@
+/*
+* App Name: Hotel Admin
+* App URI: 
+* Description: Free Admin html5 page
+* Author: Oussama Bougnouch
+* Author URI: https://www.behance.net/Musama_B
+*/
+@import 'fonts.css';
+/*******************************************************
+********************* 0.RESET
+*******************************************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kb , q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*******************************************************
+********************* 1.GENERAL SETTINGS
+*******************************************************/
+html{
+  width: 100%;
+  float: left;
+  overflow-x: hidden;
+}
+body {
+  background:#f8f8f8;
+  color: #888888;
+  -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+  word-break: break-word;
+  font: normal 14px 'Open Sans','sans-serif', Arial, Verdana;
+}
+a, a:after {
+  color: #888888;
+  text-decoration: none !important;
+  -webkit-transition: color 0.4s, background 0.4s, border-color 0.4s;
+    -moz-transition:    color 0.4s, background 0.4s, border-color 0.4s;
+    -o-transition:      color 0.4s, background 0.4s, border-color 0.4s;
+    transition:         color 0.4s, background 0.4s, border-color 0.4s;
+}
+a:hover {
+  color: #444444;
+  text-decoration: none !important;
+}
+p {
+  font-size: 1em;
+}
+b,
+strong {
+  font-weight: bold;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 120%;
+  color: #444444;
+  clear:both;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  color: #444444;
+  font-family: inherit;
+  line-height: 100%;
+  font-size: 'Raleway', sans-serif, Arial;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  color: #25b7e7;
+}
+h1 {
+  font-size: 2.1em;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 1.7em;
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 1.38em;
+  margin-bottom: 15px;
+}
+h4 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+h5 {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+p,
+blockquote{
+  line-height: 160%;
+  margin: 0px 0px 20px;
+}
+blockquote {
+  font-size: 1.1em;
+  font-style: italic;
+  border-left: 6px solid #000;
+  padding-left: 20px;
+  margin: 0 0 20px 10px;
+}
+img {
+  margin: 0 0 20px;
+  display: block;
+}
+section{
+  padding: 60px 0;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+  background-color: white;
+  font-family: inherit;
+  border: 1px solid #ddd;
+  color: #666666;
+  display: block;
+  font-size: 14px;
+  height: 38px;
+  padding: 6px;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+textarea {
+  width: 100%;
+  display: table;
+  padding: 6px;
+  height: 200px;
+  min-height: 180px;
+  box-sizing: border-box;
+}
+select{
+  border-color: #dddddd;
+  color: #aaa;
+  height: 38px;
+  width: 100%;
+  outline: none;
+  padding: 6px;
+  box-sizing: border-box;
+}
+/*******************************************************
+********************* HELPER CLASSES
+*******************************************************/
+.white{ color: white; }
+.red{ color: #d43742;}
+.blue{ color: #55abe2;}
+.orange{ color: #eb8211;}
+.center{
+  text-align: center;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.no-m { margin: 0 !important; }
+.no-m-t { margin-top: 0 !important; }
+.no-m-b { margin-bottom: 0 !important; }
+.no-m-l { margin-left: 0 !important; }
+.no-m-r { margin-right: 0 !important; }
+.no-pd  { padding: 0 !important; }
+.no-pd-t{ padding-top: 0 !important; }
+.no-pd-b{ padding-bottom: 0 !important; }
+.no-pd-l{ padding-left: 0 !important; }
+.no-pd-r{ padding-right: 0 !important; }
+.align-left{ text-align: left; }
+.align-right{ text-align: right; }
+.auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+.m-mhw{
+  display: table;
+  height: 768px;
+}
+.m-mhw-content{
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+}
+img.scale{
+  width: 100%;
+  height: auto;
+}
+/*
+** NO HEADING
+*/
+.no-heading{
+  margin-top: 70px;
+}
+/*
+** FORM ROW
+*/
+.form-row{
+  margin-bottom: 20px;
+}
+.form-row label{
+  color: #aaa;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+.form-row.double input,
+.form-row.double select{
+  width: 48%;
+  float: left;
+}
+.form-row.double input:first-child{
+  margin-right: 2%;
+}
+/*
+** SECTION PADDING
+*/
+.sp{
+  padding-top: 60px;
+}
+/*******************************************************
+********************* BUTTONS
+*******************************************************/
+.btn,
+a.btn{
+  padding: 10px 13px;
+  color: #fff;
+  cursor: pointer;
+  background: #a48723;
+  border: 1px solid transparent;
+  border-radius: 0;
+  display: inline-block;
+  font-size: 11px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -moz-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -o-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -ms-transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  transition: all 0.2s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+/* BLUE */
+.btn-blue{
+  background: #55abe2;
+}
+/* RED */
+.btn.btn-red{
+  background: #d43742;
+}
+/* ORANGE */
+.btn.btn-orange{
+  background: #eb8211;
+}
+.btn:hover{
+  color: #fff;
+  background: #222;
+}
+/* medium */
+.btn.btn-medium{
+  padding: 8px 14px;
+  font-size: 1.1em;
+}
+/* large */
+.btn.btn-large{
+  padding: 16px 20px;
+  font-size: 1.2em;
+}
+/* Button full */
+.btn-full{
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+/* border */
+.btn.btn-border{
+  background: transparent;
+  border-color: rgba(22,22,22,1);
+  color: rgba(22,22,22,1);
+}
+.btn.btn-border:hover{
+  background: rgba(22,22,22,1);
+  color: #ffffff;
+}
+/* radius */
+.btn.btn-radius{
+  border-radius: 25px;
+}
+/* color */
+.btn.btn-color.btn-border{
+  background: transparent;
+}
+.btn.btn-color.btn-border:hover{
+  color: #ffffff;
+}
+/* white */
+.btn.btn-white{
+  background: rgba(255,255,255,.9);
+  color: #444444;
+}
+.btn.btn-white:hover{
+  background: rgba(255,255,255,1);
+}
+.btn.btn-white.btn-border{
+  background: transparent;
+  border-color: rgba(255,255,255,1);
+  color: rgba(255,255,255,1);
+}
+.btn.btn-white.btn-border:hover{
+  background: rgba(255,255,255,1);
+  color: #444444;
+}
+.btn-tool{
+  border-radius: 100%;
+  font-size: 1.2em;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+}
+/*******************************************************
+********************* LOGIN PAGE
+*******************************************************/
+.login-page{
+  background: #333333 url('../images/hotel.jpg') center center fixed no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.login-container{
+  margin-top: 200px;
+}
+.login-logo{
+  margin-bottom: 40px;
+}
+.login-form{
+  border: 1px solid #eee;
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgba(0,0,0,.1);
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.login-form input{
+  background: transparent;
+  border-radius: 5px;
+  color: #fff;
+  height: 55px;
+  font-size: 1.4em;
+  font-weight: 300;
+  margin-bottom: 20px;
+  padding: 12px;
+}
+.login-form input::-webkit-input-placeholder {
+   color: #fff;
+}
+.login-form input:-moz-placeholder { /* Firefox 18- */
+   color: #fff;  
+}
+.login-form input::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;  
+}
+.login-form input:-ms-input-placeholder {  
+   color: #fff;  
+}
+.login-form input:focus,
+.login-form input:active{
+  color: #fff;
+  border-color: #eb8211;
+}
+.login-form .btn{
+  border-radius: 5px;
+  width: 100%;
+  -webkit-box-sizing: bo;
+  -moz-box-sizing: bo;
+  box-sizing: border-box;
+}
+.forgot-pass{
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.forgot-pass:hover{
+  color: #fff;
+}

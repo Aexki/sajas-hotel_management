@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'img/fav.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Taxi</title>
+
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700' %}" rel="stylesheet">
+    <!--
+			CSS
+			============================================= -->
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <!-- <header id="header">
+		  		<div class="header-top">
+				</div>
+			    <div class="container main-menu">
+			    	<div class="row align-items-center justify-content-between d-flex">
+			    		<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>		
+						<nav id="nav-menu-container">
+							<ul class="nav-menu">
+							  <li class="menu-active"><a href="index.html">Home</a></li>
+							  <li><a href="about.html">About</a></li>
+							  <li><a href="service.html">Services</a></li>
+							  <li><a href="gallery.html">Gallery</a></li>
+							  <li class="menu-has-children"><a href="">Blog</a>
+							    <ul>
+							      <li><a href="blog-home.html">Blog Home</a></li>
+							      <li><a href="blog-single.html">Blog Single</a></li>
+							      <li class="menu-has-children"><a href="">Level 2</a>
+							        <ul>
+							          <li><a href="#">Item One</a></li>
+							          <li><a href="#">Item Two</a></li>
+							        </ul>
+							      </li>					              
+							    </ul>
+							  </li>
+							  <li><a href="elements.html">Elements</a></li>							  			          	          
+							  <li><a href="contact.html">Contact</a></li>
+							</ul>
+						</nav>		
+			    	</div>
+			    </div>
+			</header>-->
+
+    <!-- start banner Area -->
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row fullscreen d-flex align-items-center justify-content-between">
+                <div class="banner-content col-lg-6 col-md-6 ">
+                    <h6 class="text-white ">Need a cab for tour ??</h6>
+                    <h1 class="text-uppercase">
+                        We are there to help you
+                    </h1>
+                    <h6 class="text-white " style="padding-top: 20px;">Package 1:
+                        <ul>
+                            <li>12 hours</li>
+                            <li>Lingraj Temple-Museum-Nandankanan Zoo</li>
+                            <li>1200/-</li>
+                        </ul>
+                    </h6>
+                    <h6 class="text-white " style="padding-top: 20px;">Package 2:
+                        <ul>
+                            <li>12 hours</li>
+                            <li>Bhubaneswar-Puri</li>
+                            <li>3000/-</li>
+                        </ul>
+                    </h6>
+                    <h6 class="text-white " style="padding-top: 20px;">Package 3:
+                        <ul>
+                            <li>8 hours</li>
+                            <li>Temple City Tour</li>
+                            <li>1000/-</li>
+                        </ul>
+                    </h6>
+                </div>
+
+                <div class="col-lg-4  col-md-6 header-right">
+                    <h4 class="pb-30">Book Your Cab through us </h4>
+                    <form class="form" href="{% url 'cab' %}" method="POST">{%csrf_token%}
+                        <div class="form-group">
+                            <div class="default-select" id="default-select2">
+                                <select name='package'>
+                                <option value="" disabled selected hidden>Select Package</option>
+                                <option value="package 1">Package 1</option>
+                                <option value="package 2">Package 2</option>
+                                <option value="package 3">Package 3</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group dates-wrap">
+                                <input id="datepicker2" name="date" class="dates form-control" placeholder="Date & time" type="text">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><span class="lnr lnr-calendar-full"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default btn-lg btn-block text-center text-uppercase">Make reservation</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="card-deck">
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Package 1</h5>
+                    <p class="card-text">12 hours<br> LINGRAJ TEMPLE-MUSEUM-NANDANKANAN ZOO <br>1200/-
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Package 2</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Package 3</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div> -->
+    </section>
+    <br>
+    <br>
+    <section>
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'img/ola.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">OLA</h5>
+                    <p class="card-text">Ola, a cab booking service provider has launched its first nationwide marketing campaign titled 'Chalo Niklo'. Created by Happy Creative Services, the multi-channel campaign aims to position Ola as the go-to transport platform of choice.</p>
+                    <a href="https://www.olacabs.com/" class="btn btn-primary">OLA</a>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'img/uber.png' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">UBER</h5>
+                    <p class="card-text">Uber Technologies, Inc., commonly known as Uber, is an American multinational ride-hailing company offering services that include peer-to-peer ridesharing, ride service hailing, food delivery (Uber Eats), and a micromobility system
+                        with electric bikes and scooters.</p>
+                    <a href="https://www.uber.com/in/en/ride/" class="btn btn-primary">UBER</a>
+
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'img/taxi2.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">LOCAL CAB SERVICE</h5>
+                    <p class="card-text">You can register in the above panel to avail local cab services.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="#" class="btn btn-primary">Move to top</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+
+    <!-- Start home-about Area -->
+
+    <!-- End footer Area -->
+
+    <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' %}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA' %}"></script>
+    <script src="{% static 'js/easing.min.js' %}"></script>
+    <script src="{% static 'js/hoverIntent.js' %}"></script>
+    <script src="{% static 'js/superfish.min.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
