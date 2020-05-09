@@ -26,17 +26,23 @@
             margin-bottom: 30px;
         }
         
-        .heya .card {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        @media(max-width: 500px) {
+            #feature h1 {
+                font-size: 60px;
+            }
         }
         
-        .card {
+        #feature_cards {
+            text-align: center;
+        }
+        
+        #feature_cards .card {
             height: 29rem;
             text-align: center;
             border: 1px solid black;
             transition: 0.2s ease-in-out;
+            display: inline-block;
+            margin: 20px 0 0 0;
         }
         
         .card img {
@@ -45,8 +51,10 @@
             border-bottom: 1px solid black;
         }
         
-        #services button {
-            width: 200px;
+        .dropdown-menu button {
+            width: 100%;
+            padding: 3px;
+            margin-bottom: 2px;
         }
         
         #request {
@@ -116,6 +124,9 @@
                         </li>
                         <li><a href="./blog.html">News</a></li>
                         <li><a href="./contact.html">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="logout">Log out</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap"></div>
@@ -128,8 +139,8 @@
     <div id="feature">
         <h1>Features</h1>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4 heya">
+            <div class="row" id="feature_cards">
+                <div class="col-md-4">
                     <div class="card" style="width: 18rem;" id="c3">
                         <img src="https://cdn3.vectorstock.com/i/1000x1000/62/97/24-hour-room-service-icon-vector-14076297.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -142,8 +153,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 heya">
-                    <div class="card" style="width: 18rem;" id="c1">
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
                         <img src="https://marketingplatform.vivial.net/sites/default/files/inline_images/colfax-cleaning-service.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Raise a request</h5>
@@ -154,46 +165,30 @@
                                       Get Now!
                                     </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <form action="{% url 'business_feature' %}" method="post" id="services">
-                                        {%csrf_token%}
-                                        <div class="luggage">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                                Launch demo modal
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal1">
+                                                Luggage carrier
                                             </button>
-                                            <button type="submit" value="Luggage carrier" name="feature">Luggage carrier</button><br>
-                                            <div class="modal fade" id="exampleModalCenter" tabindex="5" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalCenterTitle">Continue for Requesting..</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Apply for Room Service Now.
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Request Now!</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" value="Luggage carrier" name="feature">Luggage carrier</button><br>
-                                        <button type="submit" value="Room services" name="feature">Room services</button><br>
-                                        <button type="submit" value="A.C. issue" name="feature">A.C. issue</button><br>
-                                        <button type="submit" value="T.V. issues" name="feature">T.V. issues</button><br>
-                                        <button type="submit" value="Laundry service" name="feature">Laundry service</button>
-                                    </form>
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal2">
+                                                Room Services
+                                            </button>
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal3">
+                                                A.C. issue service
+                                            </button>
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal4">
+                                                T.V. issues service
+                                            </button>
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal5">
+                                                Laundry Service
+                                            </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 heya">
-                    <div class="card" style="width: 18rem;" id="c4">
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
                         <img src="https://i0.wp.com/discovervibe.blog/wp-content/uploads/2019/08/Webp.net-resizeimage-13.jpg?fit=1920%2C1080&ssl=1" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Raise a complaint</h5>
@@ -205,6 +200,110 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal bodies inside the form when clicked submits the form as a request -->
+    <form action="{% url 'feature' %}" method="post" id="services">
+        {%csrf_token%}
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Luggage Carrier Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        Add a request for your luggage to be transported directly to your room.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="Luggage carrier" name="feature">Add request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Room Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        Add a request for the Room service.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="Room services" name="feature">Add request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel3">A.C. issue Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you have a problem with your A.C., then add a request and will come to check the device.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="A.C. issue service" name="feature">Add request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel4">T.V. issue Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        If you have any problem with your T.V., then add a request.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="T.V. issues service" name="feature">Add request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel5">Laundry Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        If you want your clothes to be ready for your outing, then add a request.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="Laundry service" name="feature">Add request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <div id="request">
     </div>

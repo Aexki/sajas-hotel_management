@@ -31,9 +31,31 @@
             padding: 10px
         }
         
+        @media(max-width: 1200px) {
+            .preference h1 {
+                font-size: 50px;
+            }
+        }
+        
+        @media(max-width: 768px) {
+            .preference h1 {
+                position: absolute;
+                top: 50%;
+            }
+        }
+        
+        @media(max-width: 530px) {
+            #head {
+                top: 55%;
+                font-size: 45px;
+            }
+        }
+        
         .preference img {
             height: calc(100vh - 180px);
+            width: 100%;
             border: 2px solid black;
+            margin-bottom: 20px;
         }
         
         .obvio h1 {
@@ -77,7 +99,7 @@
     <!-- Header End -->
 
     <div class="preference">
-        <h1>State your purpose of visiting us..</h1>
+        <h1 id="head">State your purpose of visiting us..</h1>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
